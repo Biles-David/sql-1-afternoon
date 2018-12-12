@@ -1,0 +1,156 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Table People
+<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+--- 1 ---
+CREATE TABLE Person (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	Name VARCHAR(255),
+	Age INTEGER,
+  Height INTEGER,
+	City VARCHAR(255),
+  FavoriteColor VARCHAR(255)
+);
+
+--- 2 ---
+INSERT INTO Person (Name, AGE, Height, City, FavoriteColor) VALUES ('David', 24, 178, 'Dallas', 'green');
+INSERT INTO Person (Name, AGE, Height, City, FavoriteColor) VALUES ('Genesis', 25, 158, 'Houston', 'blue');
+INSERT INTO Person (Name, AGE, Height, City, FavoriteColor) VALUES ('Tim', 26, 180, 'Dallas', 'blue');
+INSERT INTO Person (Name, AGE, Height, City, FavoriteColor) VALUES ('Eric', 28, 180, 'New York', 'pink');
+INSERT INTO Person (Name, AGE, Height, City, FavoriteColor) VALUES ('Jon', 24, 182, 'Colorado', 'red');
+
+--- 3 ---
+SELECT * FROM Person ORDER BY Height ASC;
+
+--- 4 ---
+SELECT * FROM Person ORDER BY Height DESC;
+
+--- 5 ---
+SELECT * FROM Person ORDER BY Age DESC;
+
+--- 6 ---
+SELECT * FROM Person WHERE AGE >= 20;
+
+--- 7 ---
+SELECT * FROM Person WHERE AGE = 18;
+
+--- 8 ---
+SELECT * FROM Person WHERE AGE < 20 AND AGE > 30;
+
+--- 9 ---
+SELECT * FROM Person WHERE AGE != 27;
+
+--- 10 ---
+SELECT * FROM Person WHERE FavoriteColor != 'red';
+
+--- 11 ---
+SELECT * FROM Person WHERE FavoriteColor != 'red' AND FavoriteColor != 'blue';
+
+--- 12 ---
+SELECT * FROM Person WHERE FavoriteColor = 'orange' OR FavoriteColor = 'green');
+
+--- 13 ---
+SELECT * FROM Person WHERE FavoriteColor IN ('orange', 'green', 'blue');
+
+--- 14 ---
+SELECT * FROM Person WHERE FavoriteColor IN ('purple', 'yellow');
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Table Orders
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+--- 1 ---
+CREATE TABLE Orders (
+	PersonID Integer,
+  ProductName VARCHAR(255),
+  ProductPrice DECIMAL,
+  Quantity INTEGER
+);
+
+--- 2 ---
+INSERT INTO Orders VALUES (123, 'Screws', 0.59, 50);
+INSERT INTO Orders VALUES (321, 'Nails', 0.39, 100);
+
+--- 3 ---
+SELECT * FROM Orders;
+
+--- 4 ---
+SELECT sum(Quantity) FROM Orders;
+
+--- 5 ---
+SELECT sum(ProductPrice * Quantity) FROM Orders;
+
+--- 6 ---
+SELECT sum(ProductPrice * Quantity) FROM Orders WHERE PersonID = '123';
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Table Artist
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+--- 1 ---
+INSERT INTO Artist (Name) VALUES ('David and the Pips');
+INSERT INTO Artist (Name) VALUES ('The Freedom of the Small');
+INSERT INTO Artist (Name) VALUES ('The one Who Knocks');
+
+--- 2 ---
+SELECT * FROM Artist ORDER BY Name DESC LIMIT 10;
+
+--- 3 ---
+SELECT * FROM Artist ORDER BY Name ASC LIMIT 5;
+
+--- 4 ---
+SELECT * FROM Artist WHERE Name LIKE 'Black%';
+
+--- 5 ---
+SELECT * FROM Artist WHERE Name LIKE '%Black%';
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Table Employee
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+--- 1 ---
+SELECT FirstName, LastName FROM Employee WHERE City = 'Calgary';
+
+--- 2 ---
+SELECT max(BirthDate), FirstName, LastName FROM Employee;
+
+--- 3 ---
+SELECT min(BirthDate), FirstName, LastName FROM Employee;
+
+--- 4 ---
+SELECT * FROM Employee WHERE ReportsTo = 2;
+
+--- 5 ---
+SELECT count(*) FROM Employee WHERE City = 'Lethbridge';
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Table Invoice
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+--- 1 ---
+SELECT count(*) FROM Invoice WHERE BillingCountry = 'USA'; 
+
+--- 2 ---
+SELECT max(total) FROM Invoice;
+
+--- 3 ---
+SELECT min(total) FROM Invoice;
+
+--- 4 ---
+SELECT * FROM Invoice WHERE Total > 5;
+
+--- 5 ---
+SELECT count(*) FROM Invoice WHERE Total < 5;
+
+--- 6 ---
+SELECT count(*) FROM Invoice WHERE BillingState IN ('CA', 'TX', 'AZ');
+
+--- 7 ---
+SELECT avg(Total) FROM Invoice;
+
+--- 8 ---
+SELECT sum(Total) FROM Invoice;
